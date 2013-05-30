@@ -53,4 +53,11 @@ class ProductsControllerTest < ActionController::TestCase
 
     assert_redirected_to products_path
   end
+  
+  test "my_tests_for goods" do
+    get :index
+    assert_response :success
+    assert_select '.list_actions a', minimum: 3
+    assert_select 'table .list_line_odd', minimum: 1
+  end
 end
