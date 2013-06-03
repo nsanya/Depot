@@ -43,7 +43,7 @@ class LineItemsController < ApplicationController
     #@line_item = LineItem.new(params[:line_item])
     @cart = current_cart
     product = Product.find(params[:product_id])
-    @line_item = @cart.line_items.build(product: product)
+    @line_item = @cart.add_product(product.id)
 
     respond_to do |format|
       if @line_item.save
@@ -80,7 +80,7 @@ class LineItemsController < ApplicationController
     @line_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to line_items_url }
+      format.html { redirect_to current_cart, :notice => 'Line Item Removed' }
       format.json { head :no_content }
     end
   end
