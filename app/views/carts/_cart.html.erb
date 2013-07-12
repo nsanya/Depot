@@ -10,6 +10,7 @@
 
 <%= button_to 'Empty cart', cart, method: :delete, data: { confirm: 'Are you sure?' },
 				remote: true %>
+<%= button_to 'Order', new_order_path, method: :get %>
 
 <%= link_to "Main", store_path%>
 <%= cart.id %>
